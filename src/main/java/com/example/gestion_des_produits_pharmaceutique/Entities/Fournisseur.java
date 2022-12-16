@@ -33,10 +33,7 @@ public class Fournisseur {
     @OneToMany(mappedBy = "fournisseur", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<FactureAchat> factureAchats;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "t_Fournisseur_ProduitPharmaceutique",
-            joinColumns = @JoinColumn(name = "id_four"),
-            inverseJoinColumns = @JoinColumn(name = "id_prod"))
+    @ManyToMany(mappedBy = "fournisseurs", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
     private List<ProduitPharmaceutique> produitPharmaceutiques;
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/fournisseur")
+@CrossOrigin(origins = "http://localhost:4200")
 public class FournisseurController {
 
     @Autowired
@@ -21,7 +22,7 @@ public class FournisseurController {
         return fournisseurService.getAllFournisseur();
     }
 
-    @GetMapping("/fournisseurbyid")
+    @GetMapping("/fournisseurbyid/{id}")
     public Fournisseur findFournisseurById(@PathVariable Long id) {
         return fournisseurService.findFournisseurById(id);
     }

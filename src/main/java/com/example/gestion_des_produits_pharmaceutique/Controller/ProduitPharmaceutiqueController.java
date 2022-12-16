@@ -1,5 +1,7 @@
 package com.example.gestion_des_produits_pharmaceutique.Controller;
 
+import com.example.gestion_des_produits_pharmaceutique.Entities.Famille;
+import com.example.gestion_des_produits_pharmaceutique.Entities.Laboratoire;
 import com.example.gestion_des_produits_pharmaceutique.Entities.ProduitPharmaceutique;
 import com.example.gestion_des_produits_pharmaceutique.Services.ProduitPharmaceutiqueService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ProduitPharmaceutique")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProduitPharmaceutiqueController {
 
     @Autowired
@@ -28,13 +31,27 @@ public class ProduitPharmaceutiqueController {
 
     @PostMapping("/add")
     public ProduitPharmaceutique addProduitPharmaceutique(@Validated @RequestBody ProduitPharmaceutique produitPharmaceutique){
+       System.out.println(produitPharmaceutique.getLib_prd());
         return produitPharmaceutiqueService.saveProduitPharmaceutique(produitPharmaceutique);
+    }
+
+    @PutMapping("/assignFamille/{id}")
+    public void assignFamille(@PathVariable Long id, @RequestBody Long id_famille){
+        produitPharmaceutiqueService.assignFamille(id,id_famille);
+    }
+
+    @PutMapping("/assignLabo/{id}")
+    public void assignLabo(@PathVariable Long id, @RequestBody Long id_labo){
+        produitPharmaceutiqueService.assignLabo(id,id_labo);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteProduitPharmaceutique(@PathVariable Long id){
         if (produitPharmaceutiqueService.produitExist(id)) {
+            System.out.println("ProduitPharmaceutique in progress");
             produitPharmaceutiqueService.deleteProduitPharmaceutique(id);
+            System.out.println("ProduitPharmaceutique deleted successfully");
+
             return ResponseEntity.ok().body("ProduitPharmaceutique deleted successfully");
         } else {
             return ResponseEntity.ok().body("ProduitPharmaceutique not found");

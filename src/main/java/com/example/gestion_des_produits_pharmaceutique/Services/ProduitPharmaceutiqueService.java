@@ -1,6 +1,11 @@
 package com.example.gestion_des_produits_pharmaceutique.Services;
 
+import com.example.gestion_des_produits_pharmaceutique.Entities.Famille;
+import com.example.gestion_des_produits_pharmaceutique.Entities.Laboratoire;
 import com.example.gestion_des_produits_pharmaceutique.Entities.ProduitPharmaceutique;
+import com.example.gestion_des_produits_pharmaceutique.Repository.FactureAchatRepository;
+import com.example.gestion_des_produits_pharmaceutique.Repository.FamilleRepository;
+import com.example.gestion_des_produits_pharmaceutique.Repository.LaboratoireRepository;
 import com.example.gestion_des_produits_pharmaceutique.Repository.ProduitPharmaceutiqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +17,12 @@ public class ProduitPharmaceutiqueService {
 
     @Autowired
     private ProduitPharmaceutiqueRepository produitPharmaceutiqueRepository;
+
+    @Autowired
+    private FamilleRepository familleRepository;
+
+    @Autowired
+    private LaboratoireRepository laboratoireRepository;
 
     public List<ProduitPharmaceutique> findAllProduitPharmaceutique() {
         return produitPharmaceutiqueRepository.findAll();
@@ -25,8 +36,17 @@ public class ProduitPharmaceutiqueService {
         return produitPharmaceutiqueRepository.save(produitPharmaceutique);
     }
 
+    public void assignFamille(Long id, Long id_famille){
+        produitPharmaceutiqueRepository.findById(id).get().setFamille(familleRepository.findById(id_famille).get());
+    }
+
+    public void assignLabo(Long id, Long id_laboratoire){
+        produitPharmaceutiqueRepository.findById(id).get().setLaboratoire(laboratoireRepository.findById(id_laboratoire).get());
+    }
+
     public void deleteProduitPharmaceutique(Long id) {
         produitPharmaceutiqueRepository.deleteById(id);
+
     }
 
     public ProduitPharmaceutique updateProduitPharmaceutique(Long id, ProduitPharmaceutique produitPharmaceutique) {

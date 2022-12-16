@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class ProduitPharmaceutique {
     private String Lib_prd;
     private String Description_prd;
     private Double prix_prd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateAjout_prd;
     private float prix_livr;
 
@@ -40,14 +42,12 @@ public class ProduitPharmaceutique {
 
     private Laboratoire laboratoire;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "t_ProduitPharmaceutique_Fournisseur",
             joinColumns = @JoinColumn(name = "id_prd"),
             inverseJoinColumns = @JoinColumn(name = "id_four"))
     private List<Fournisseur> fournisseurs;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "t_ProduitPharmaceutique_FactureAchat",
             joinColumns = @JoinColumn(name = "id_prd"),

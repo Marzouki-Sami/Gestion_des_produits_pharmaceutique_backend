@@ -64,6 +64,7 @@
                 </configuration>
             </plugin>
         </plugins>
+       <finalName>pharmacie</finalName>
     </build>
 
 </project>

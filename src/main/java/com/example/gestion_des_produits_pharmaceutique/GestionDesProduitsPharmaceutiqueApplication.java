@@ -57,12 +57,17 @@ public class GestionDesProduitsPharmaceutiqueApplication implements CommandLineR
 
         Utilisateur utilisateur2 = new Utilisateur(null, "Utilisateur 2", "Utilisateur 2", "Address 2", "Email 2", 22222, null, listFournisseurs);
 
-        ProduitPharmaceutique produitPharmaceutique1 = new ProduitPharmaceutique(null, "Produit 1", "Description 1", 100.0, null, 100, famille1, laboratoire1, listFournisseurs, null);
-        ProduitPharmaceutique produitPharmaceutique2 = new ProduitPharmaceutique(null, "Produit 2", "Description 2", 200.0, null, 200, famille2, laboratoire2, listFournisseurs, null);
-        ProduitPharmaceutique produitPharmaceutique3 = new ProduitPharmaceutique(null, "Produit 3", "Description 3", 300.0, null, 300, famille3, laboratoire1, listFournisseurs, null);
-        ProduitPharmaceutique produitPharmaceutique4 = new ProduitPharmaceutique(null, "Produit 4", "Description 4", 400.0, null, 400, famille1, laboratoire2, listFournisseurs, null);
-        ProduitPharmaceutique produitPharmaceutique5 = new ProduitPharmaceutique(null, "Produit 5", "Description 5", 500.0, null, 500, famille2, laboratoire1, listFournisseurs, null);
-        ProduitPharmaceutique produitPharmaceutique6 = new ProduitPharmaceutique(null, "Produit 6", "Description 6", 600.0, null, 600, famille3, laboratoire2, listFournisseurs, null);
+
+        Date date11 = new Date(2022,10,20);
+        Date date22 = new Date(2022,10,20);
+        Date date33 = new Date(2022,10,20);
+
+        ProduitPharmaceutique produitPharmaceutique1 = new ProduitPharmaceutique(null, "Produit 1", "Description 1", 100.0, date11, 100, famille1, laboratoire1, null, null);
+        ProduitPharmaceutique produitPharmaceutique2 = new ProduitPharmaceutique(null, "Produit 2", "Description 2", 200.0, date22, 200, famille2, laboratoire2, null, null);
+        ProduitPharmaceutique produitPharmaceutique3 = new ProduitPharmaceutique(null, "Produit 3", "Description 3", 300.0, date33, 300, famille3, laboratoire1, null, null);
+        ProduitPharmaceutique produitPharmaceutique4 = new ProduitPharmaceutique(null, "Produit 4", "Description 4", 400.0, date11, 400, famille1, laboratoire2, null, null);
+        ProduitPharmaceutique produitPharmaceutique5 = new ProduitPharmaceutique(null, "Produit 5", "Description 5", 500.0, date22, 500, famille2, laboratoire1, null, null);
+        ProduitPharmaceutique produitPharmaceutique6 = new ProduitPharmaceutique(null, "Produit 6", "Description 6", 600.0, date33, 600, famille3, laboratoire2, null, null);
 
         List<ProduitPharmaceutique> listProduitPharmaceutiques1234 = List.of(produitPharmaceutique1, produitPharmaceutique2, produitPharmaceutique3, produitPharmaceutique4);
         List<ProduitPharmaceutique> listProduitPharmaceutiques56 = List.of(produitPharmaceutique5, produitPharmaceutique6);
